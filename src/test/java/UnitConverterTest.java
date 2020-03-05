@@ -1,5 +1,6 @@
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
@@ -17,7 +18,7 @@ class UnitConverterTest {
     @Test()
     void createNegativeKilogram(){
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
-           new Kilogram(new BigDecimal(-10));
+            new Kilogram(new BigDecimal(-10));
         });
     }
 
@@ -58,5 +59,16 @@ class UnitConverterTest {
                 () -> Assertions.assertThrows(NullPointerException.class, () -> new Kilogram(null)),
                 () -> Assertions.assertThrows(NullPointerException.class, () -> new Pound(null))
         );
+    }
+
+    @Nested
+    class ExceptionHandling{
+        @Test()
+        void createNegativeWeightInKilogram(){
+            IllegalArgumentException exception = Assertions.assertThrows(IllegalArgumentException.class, () -> {
+                new Kilogram(new BigDecimal(-5));
+            });
+            Assertions.assertEquals("Weight can't be negative!", exception.getMessage());
+        }
     }
 }
