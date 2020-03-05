@@ -5,7 +5,7 @@ public class Pound implements UnitResolution {
 
     public final BigDecimal value;
 
-    public Pound(BigDecimal value) {
+    public Pound(final BigDecimal value) {
         if (BigDecimal.ZERO.compareTo(value) > 0) {
             throw new IllegalArgumentException("Weight can't be negative!");
         }

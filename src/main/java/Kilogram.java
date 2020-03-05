@@ -3,7 +3,7 @@ import java.math.BigDecimal;
 public class Kilogram implements UnitResolution {
     public final BigDecimal value;
 
-    public Kilogram(BigDecimal value){
+    public Kilogram(final BigDecimal value){
         if(BigDecimal.ZERO.compareTo(value) > 0){
             throw new IllegalArgumentException("Weight can't be negative!");
         }
