@@ -1,1 +1,1 @@
-Unit Converter which converts pounds into kilograms and otherwise wilt unit tests (JUnit5).
+Unit Converter which converts pounds into kilograms and otherwise with unit tests (JUnit5).

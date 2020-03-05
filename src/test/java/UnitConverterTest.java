@@ -6,7 +6,6 @@ import java.math.BigDecimal;
 import java.time.Duration;
 
 class UnitConverterTest {
-
     @DisplayName("createNegative")
     @Test()
     void createNegativePound(){
@@ -23,15 +22,27 @@ class UnitConverterTest {
     }
 
     @Test()
-    void kiloToPounds(){
+    void kiloToPound(){
         final Kilogram kilogram = new Kilogram(BigDecimal.ONE);
         Assertions.assertEquals(new BigDecimal("2.2046"), kilogram.toPounds().value);
     }
 
     @Test()
-    void poundsToKilo(){
+    void poundToKilo(){
         final Pound pound = new Pound(BigDecimal.ONE);
         Assertions.assertEquals(new BigDecimal("0.4536"), pound.toKilograms().value);
+    }
+
+    @Test
+    void convertZeroKiloValue(){
+        final Pound pound = new Kilogram(BigDecimal.ZERO).toPounds();
+        Assertions.assertEquals(BigDecimal.ZERO.setScale(4), pound.value);
+    }
+
+    @Test
+    void convertZeroPoundValue(){
+        final Kilogram kilogram = new Pound(BigDecimal.ZERO).toKilograms();
+        Assertions.assertEquals(BigDecimal.ZERO.setScale(4), kilogram.value);
     }
 
     @Test
